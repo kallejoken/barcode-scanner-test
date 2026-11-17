@@ -1,0 +1,14 @@
+.esphome/
+_build-logs/
+_fonts/
+secrets.yaml
+__pycache__/
+*.pyc
+test-paket/
+
+
+
+
+
+
+
