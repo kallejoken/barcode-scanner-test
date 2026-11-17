@@ -1,0 +1,8 @@
+# Optional: ESPHome Device Builder „Kontrolle übernehmen“ / Adopt.
+# Zeigt auf das offizielle Upstream-Repo. Nur einhängen, wenn die Firmware
+# bewusst aus dem veröffentlichten Stand stammen soll.
+# In barcode.yaml und im lokalen Testpaket bewusst nicht enthalten,
+# damit ein Testdevice nicht zum Übernehmen der (noch kaputten) main aufgefordert wird.
+dashboard_import:
+  package_import_url: github://SmartHome-yourself/barcode-scanner-for-esphome/barcode.yaml@main
+  import_full_config: false
