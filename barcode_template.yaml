@@ -1,0 +1,22 @@
+# Vorlage für die eigene Geräte-YAML (lokale Dateien neben dieser Datei).
+# Für den Einbau aus GitHub siehe README-TEST.md.
+substitutions:
+  name: "barcode-scanner"
+  friendly_name: "Barcode Scanner"
+  # Eigene Kontakt-Mail eintragen (verlangt Open Food Facts)
+  http_user_agent: "BarcodeScannerESPHome/2.3 (deine-mail@example.com)"
+  # Liste in Home Assistant, "" = nicht eintragen
+  shopping_list_entity: "todo.shopping_list"
+  # Optional: eigene OpengtinDB-QueryID, "" = aus
+  opengtindb_queryid: ""
+
+packages:
+  barcode: !include barcode.yaml
+  # Mit OLED: nächste Zeile einkommentieren
+  # display: !include packages/display.yaml
+  # Device-Builder-"Adopt" auf das Upstream-Repo (nur für veröffentlichte Stände)
+  dashboard_import: !include packages/dashboard_import.yaml
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
