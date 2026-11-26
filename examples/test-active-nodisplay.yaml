@@ -1,0 +1,8 @@
+# Compile-Testvariante: Buzzer active, Display no (lokal, nicht zum Flashen gedacht)
+packages:
+  barcode: !include ../barcode.yaml
+  buzzer: !include ../packages/buzzer-active.yaml
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
