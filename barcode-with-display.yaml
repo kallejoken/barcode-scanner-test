@@ -1,5 +1,6 @@
-# Variante mit OLED (SSD1306 128x64, I2C 0x3C, SDA GPIO21, SCL GPIO22).
-# Ohne Display einfach barcode.yaml verwenden.
+# Variante mit OLED (SSD1306 128x64, I2C 0x3C, SDA GPIO21, SCL GPIO22)
+# und passivem Buzzer. Für aktiven Buzzer: buzzer-active.yaml.
 packages:
   barcode: !include barcode.yaml
+  buzzer: !include packages/buzzer-passive.yaml
   display: !include packages/display.yaml

@@ -6,7 +6,7 @@
 ---
 
 ## ⚠️ Aktueller Status  
-Teststand **2.3** für ESPHome 2026.10: kompiliert, Hardware-Test mit dem GM60 steht noch aus. Anleitung zum Testen (Einbinden aus GitHub, Einkaufsliste, Hardware) in **[README-TEST.md](README-TEST.md)**. Der Web-Installer und `main` des Originalprojekts sind davon unberührt.  
+Lokaler Stand **v3.0** (Branch `feat/hacs-v3`): Der ESP ist nur noch der Scanner, Produktsuche, selbstlernende Datenbank und Einkaufsliste übernimmt die Home-Assistant-Integration **SHYS Barcode Scanner** (HACS). Einrichtung, Buzzer-Auswahl (aktiv/passiv) und GM60-Einstellungen: **[README-HACS.md](README-HACS.md)**. Der Stand 2.3 mit APIs direkt auf dem ESP bleibt auf `fix/esphome-2026` ([README-TEST.md](README-TEST.md)).  
 
 ---
   
@@ -26,7 +26,7 @@ Zu jedem gescannten Produkt wird anhand der EAN versucht, Hersteller und Produkt
   
 ## Datenquellen
 
-Die Firmware fragt die Dienste **nacheinander** ab (eine HTTPS-Verbindung zur Zeit). Sobald ein brauchbarer Produktname vorliegt, werden die folgenden Stufen übersprungen. UPCitemdb ist bewusst nicht eingebaut.
+**Ab v3.0 fragt die HACS-Integration in Home Assistant ab, nicht mehr der ESP.** Bis v2.3 galt: Die Firmware fragt die Dienste **nacheinander** ab (eine HTTPS-Verbindung zur Zeit). Sobald ein brauchbarer Produktname vorliegt, werden die folgenden Stufen übersprungen. UPCitemdb ist bewusst nicht eingebaut.
 
 #### 1. Open Food Facts (API v3, immer zuerst)
 

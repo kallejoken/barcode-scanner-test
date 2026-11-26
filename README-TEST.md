@@ -1,5 +1,7 @@
 # Barcode-Scanner für ESPHome – Testrepo
 
+> **Hinweis:** Ab v3.0 (Branch `feat/hacs-v3`) gilt [README-HACS.md](README-HACS.md). Diese Datei beschreibt den alten Stand 2.3.
+>
 > **Teststand 2.3.** Basis ist das Projekt von SmartHome-yourself
 > (https://github.com/SmartHome-yourself/barcode-scanner-for-esphome), angepasst an
 > ESPHome 2026.10. Kompiliert sauber, Hardware-Test mit neuem GM60 steht noch aus.

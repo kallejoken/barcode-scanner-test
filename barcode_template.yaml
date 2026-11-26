@@ -1,21 +1,22 @@
 # Vorlage für die eigene Geräte-YAML (lokale Dateien neben dieser Datei).
-# Für den Einbau aus GitHub siehe README-TEST.md.
+# Für den Einbau aus GitHub siehe README-HACS.md.
+# Produktsuche, Einkaufsliste und Datenbank erledigt die HACS-Integration
+# "SHYS Barcode Scanner" in Home Assistant.
 substitutions:
   name: "barcode-scanner"
   friendly_name: "Barcode Scanner"
-  # Eigene Kontakt-Mail eintragen (verlangt Open Food Facts)
-  http_user_agent: "BarcodeScannerESPHome/2.3 (deine-mail@example.com)"
-  # Liste in Home Assistant, "" = nicht eintragen
-  shopping_list_entity: "todo.shopping_list"
-  # Optional: eigene OpengtinDB-QueryID, "" = aus
-  opengtindb_queryid: ""
+  # uart_baud_rate: "57600"   # falls der GM60 nicht auf 9600 steht
 
 packages:
   barcode: !include barcode.yaml
+  # Genau EINEN Buzzer wählen:
+  buzzer: !include packages/buzzer-passive.yaml    # passiver Piezo (Töne per PWM)
+  # buzzer: !include packages/buzzer-active.yaml   # aktiver Piezo
+  # buzzer: !include packages/buzzer-none.yaml     # kein Buzzer verbaut
   # Mit OLED: nächste Zeile einkommentieren
   # display: !include packages/display.yaml
   # Device-Builder-"Adopt" auf das Upstream-Repo (nur für veröffentlichte Stände)
-  dashboard_import: !include packages/dashboard_import.yaml
+  # dashboard_import: !include packages/dashboard_import.yaml
 
 wifi:
   ssid: !secret wifi_ssid
