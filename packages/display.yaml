@@ -1,5 +1,5 @@
 # Optionales OLED-Package. Weglassen, wenn kein Display angeschlossen ist.
-# Erwartetes Modul: SSD1306 128x64 I2C, Adresse 0x3C, SDA=GPIO21, SCL=GPIO22.
+# Erwartetes Modul: SSD1306 128x64 I2C, Adresse 0x3C (Substitutions i2c_sda_pin / i2c_scl_pin, Default GPIO21/22).
 # Schrift: Google Fonts Roboto (wird beim Compilen geladen, kein arial.ttf nötig).
 
 globals:
@@ -23,8 +23,8 @@ font:
     glyphs: 'ß!?"%()+*=,-_.:°ø0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÜÖ abcdefghijklmnopqrstuvwxyzäüö€@<>/'
 
 i2c:
-  sda: "${display_i2c_sda}"
-  scl: "${display_i2c_scl}"
+  sda: "${i2c_sda_pin}"
+  scl: "${i2c_scl_pin}"
   scan: false
   frequency: 400kHz
   id: i2c_bus

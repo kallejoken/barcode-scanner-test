@@ -1,0 +1,43 @@
+# Buzzer-Paket: PASSIVER Piezo-Buzzer (braucht ein Tonsignal, sonst nur
+# leises Knacken/Knirschen). Töne per PWM (ledc) + RTTTL-Melodien.
+# Genau EIN Buzzer-Paket einbinden.
+
+substitutions:
+  # Lautstärke (PWM-Tastgrad). 50 % ist für Piezos meist am lautesten.
+  buzzer_gain: "50%"
+
+output:
+  - platform: ledc
+    id: buzzer_output
+    pin: "${beeper_pin}"
+
+rtttl:
+  id: buzzer
+  output: buzzer_output
+  gain: "${buzzer_gain}"
+
+button:
+  - platform: template
+    name: "Buzzer Test"
+    entity_category: config
+    on_press:
+      - script.execute: beep_ok
+
+script:
+  # gefunden / auf der Liste: kurzer, aufsteigender Zweiklang
+  - id: beep_ok
+    mode: restart
+    then:
+      - rtttl.play: "ok:d=16,o=6,b=180:c,g"
+
+  # unbekannt (bitte anlernen): zwei neutrale gleiche Töne
+  - id: beep_unknown
+    mode: restart
+    then:
+      - rtttl.play: "unknown:d=8,o=6,b=140:a,p,a"
+
+  # Fehler / keine Verbindung: tiefer, absteigender Ton
+  - id: beep_error
+    mode: restart
+    then:
+      - rtttl.play: "error:d=4,o=5,b=100:e,4c"

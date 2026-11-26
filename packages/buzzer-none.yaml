@@ -1,0 +1,13 @@
+# Buzzer-Paket: KEIN Buzzer verbaut. Stellt nur leere Piep-Skripte bereit,
+# damit barcode.yaml ohne Buzzer kompiliert. Genau EIN Buzzer-Paket einbinden.
+
+script:
+  - id: beep_ok
+    then:
+      - logger.log: "Piep: ok"
+  - id: beep_unknown
+    then:
+      - logger.log: "Piep: unbekannt"
+  - id: beep_error
+    then:
+      - logger.log: "Piep: Fehler"

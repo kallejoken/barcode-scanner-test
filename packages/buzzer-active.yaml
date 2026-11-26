@@ -1,0 +1,47 @@
+# Buzzer-Paket: AKTIVER Piezo-Buzzer (piept selbst, sobald Spannung anliegt).
+# Erkennbar am Aufkleber / geschlossenen Boden; „Knirschen“ statt Piepen
+# bedeutet meist: passiver Buzzer -> packages/buzzer-passive.yaml nehmen.
+# Genau EIN Buzzer-Paket einbinden.
+
+switch:
+  - platform: gpio
+    id: beeper
+    name: "Buzzer"
+    pin: "${beeper_pin}"
+    restore_mode: ALWAYS_OFF
+
+button:
+  - platform: template
+    name: "Buzzer Test"
+    entity_category: config
+    on_press:
+      - script.execute: beep_ok
+
+script:
+  # gefunden / auf der Liste: kurzer Piep
+  - id: beep_ok
+    mode: restart
+    then:
+      - switch.turn_on: beeper
+      - delay: 120ms
+      - switch.turn_off: beeper
+
+  # unbekannt (bitte anlernen): Doppel-Piep
+  - id: beep_unknown
+    mode: restart
+    then:
+      - switch.turn_on: beeper
+      - delay: 120ms
+      - switch.turn_off: beeper
+      - delay: 120ms
+      - switch.turn_on: beeper
+      - delay: 120ms
+      - switch.turn_off: beeper
+
+  # Fehler / keine Verbindung: langer Piep
+  - id: beep_error
+    mode: restart
+    then:
+      - switch.turn_on: beeper
+      - delay: 600ms
+      - switch.turn_off: beeper
